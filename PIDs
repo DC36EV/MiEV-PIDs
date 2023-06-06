@@ -1,0 +1,123 @@
+Values are from a Titanate MiEV, exact values may differ from Li-Ion versions.
+
+//////////////FROM INVERTER////////////////
+
+
+0x288	
+  10ms
+
+  0 - 07  Torque High (Hi * 256) + Lo - 2000
+  1 - D0  Torque Low
+  2 - 27  RPM High (Hi * 256) + Lo - 10000
+  3 - 10  RPM Low
+  4 - 00  Condenser Voltage (is ~88 when READY)
+  5 - 00  Constant
+  6 - 01  Off Request (03=SHUTDOWN, triggered when IGN is turned off, Lasts ~2.8Sec)
+  7 - 10  Gear (10=P/N 14=R/B 1C=D/E)																			
+
+
+0x298	
+  100ms	 
+
+  0 - 3C  Inverter Temp (Least Responsive)
+  1 - 3C  Inverter Temp
+  2 - 44  initial Rotation
+  3 - 3C  Inverter Temp (Most Responsive)
+  4 - 00  Constant
+  5 - 00  Constant
+  6 - 27  RPM High (Hi * 256) + Lo - 10000
+  7 - 10  RPM Low
+
+
+0x29A		
+  100ms (All data constant)
+
+  03 FF FF FF FF FF FF FF 																						
+
+
+0x564		
+  50ms  (All data constant)
+
+  00 00 00 00 00 00 00 00 
+
+
+0x565		
+  50ms	(All data constant)
+
+  00 00 00 00 00 00 07 00 
+
+
+0x75A	
+  100ms	
+
+  0 - 03  Torque High ((Hi * 256) + Lo) * 7 - 7000
+  1 - E7  Torque Low
+  2 - 03  Torque High (a negative absolute value of Torque) (-abs(TorqueFrom75A))
+  3 - E7  Torque Low  (a negative absolute value of Torque)
+  4 - 64  Not constant but mostly hover around this value
+  5 - 64  Not constant but mostly hover around this value
+  6 - 3B  CPU Temp High
+  7 - 3C 	CPU Temp Low																					
+
+
+0x75B	
+  100ms	
+
+  0 - 3A  Motor Temp
+  1 - 3A  Motor Temp
+  2 - 3B  Motor Temp
+  3 - 44  Initial Rotation
+  4 - 29  CPU Hours High
+  5 - 52  CPU Hours Low
+  6 - 87  Constant
+  7 - 00 	Constant	
+  
+
+//////////////FROM EV-ECU////////////////
+
+
+0x210
+ 20ms
+
+ 0 - 00  Constant
+ 1 - 00  Constant
+ 2 - 00  Accelerator High (=FA at full throttle) (0 - 64,000)
+ 3 - 00  Accelerator Low  (=80 or 00)
+ 4 - 00  Counter?         (Alternates 00 to 80 and back every 2 messages)
+ 5 - 00  Constant
+ 6 - 00  Constant
+ 7 - 00  Constant
+
+ 
+0x285
+ 10ms
+
+ 0 - 07  Torque High (Hi * 256) + Lo - 2000
+ 1 - D0  Torque Low
+ 2 - 02  Status (02=IGN 03=START 05&14&20=RUN 01=OFF)
+ 3 - 00  Constant
+ 4 - 7B  12v Voltage (/10)
+ 5 - 00  Status?
+ 6 - 08  Gear (08=Pign 0C=P/N 0E=R/D/E/B 09=Poff 48=Poff5+sec)
+ 7 - 10  Gear?
+   
+   
+0x286
+  100ms (All data constant)
+  
+  00 00 00 3C 00 00 00 00
+  
+  
+0x373
+  10ms
+  
+  0 - 9B  Voltage?
+  1 - 9A  Voltage?
+  2 - 7F  Amps High
+  3 - B9  Amps Low
+  4 - 0A  Voltage High
+  5 - B6  Voltage Low
+  6 - B4  Constant
+  7 - 06  Status (06=IGN 04=Shutoff?)
+  
+ 
